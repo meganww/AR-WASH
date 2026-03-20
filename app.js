@@ -254,7 +254,6 @@
 +    254:     } else { ve.textContent = '—'; ve.className = 'variance'; }
 +    255:   });
 +    256: }
-
 +    257: 
 +    258: // ===== SHIFT HANDOFF TRACKER =====
 +    259: var PALLETS = [{name:'Refurb',buildRate:1.5},{name:'Shoes',buildRate:1.0},{name:'Problem Solve',buildRate:0.5}];
