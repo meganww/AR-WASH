@@ -1,0 +1,142 @@
++      1: *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
++      2: body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-font-smoothing: antialiased; background: #f9fafb; color: #111827; min-height: 100vh; font-size: 13px; }
++      3: .app { max-width: 80rem; margin: 0 auto; }
++      4: header { background: linear-gradient(to right, #16a34a, #15803d); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.15); padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
++      5: header h1 { font-size: 1.5rem; font-weight: 700; color: #fff; }
++      6: .tabs { background: linear-gradient(to right, #16a34a, #15803d); padding: 0 24px; display: flex; gap: 4px; align-items: flex-end; }
++      7: .tab-btn { padding: 9px 22px; border: none; border-radius: 8px 8px 0 0; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: background 0.15s; background: #22c55e; color: #fff; font-family: inherit; }
++      8: .tab-btn:hover { background: #4ade80; }
++      9: .tab-btn.active { background: #f9fafb; color: #15803d; box-shadow: 0 -2px 8px rgba(0,0,0,0.08); }
++     10: main { padding: 20px 24px; }
++     11: .tab-content { display: none; }
++     12: .tab-content.active { display: block; }
++     13: .tab-content h2 { font-size: 1.1rem; font-weight: 700; color: #1f2937; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #d1fae5; }
++     14: .goal-bar { background: #fff; border-radius: 10px; padding: 10px 16px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); display: flex; align-items: center; gap: 14px; flex-wrap: wrap; border-left: 4px solid #16a34a; }
++     15: .main-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; align-items: start; }
++     16: @media (max-width: 1000px) { .main-grid { grid-template-columns: 1fr 1fr; } }
++     17: @media (max-width: 600px) { .main-grid { grid-template-columns: 1fr; } }
++     18: .card, .staffing-card, .path-staffing-card, .tracker-card, .wash-card, .chart-details { background: #fff; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04); }
++     19: .card h3, .staffing-card h3, .path-staffing-card h3, .wash-card h3 { font-size: 0.72rem; font-weight: 700; color: #fff; margin-bottom: 10px; padding: 6px 10px; border-radius: 6px; background: linear-gradient(to right, #16a34a, #15803d); text-transform: uppercase; letter-spacing: 0.05em; }
++     20: .field { margin-bottom: 7px; display: flex; align-items: center; gap: 8px; }
++     21: .field label { font-size: 0.78rem; font-weight: 500; color: #374151; flex: 1; min-width: 0; }
++     22: .field input, .tracker-row input, .rate-input { padding: 5px 10px; border: 1.5px solid #d1d5db; border-radius: 7px; font-size: 0.82rem; color: #111827; background: #f9fafb; transition: box-shadow 0.15s, border-color 0.15s; font-family: inherit; }
++     23: .field input { width: 90px; flex-shrink: 0; }
++     24: .tracker-row input { width: 90%; }
++     25: .rate-input { width: 62px; }
++     26: .field input:focus, .tracker-row input:focus, .rate-input:focus { outline: none; border-color: #16a34a; background: #fff; box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
++     27: .hint, .threshold { font-size: 0.68rem; color: #9ca3af; font-weight: 400; }
++     28: .results-card { background: linear-gradient(160deg, #1e3a5f 0%, #111827 100%); color: #fff; border-radius: 10px; padding: 14px 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
++     29: .results-card h3 { font-size: 0.72rem; font-weight: 700; color: #d1fae5; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid #2d4a6e; text-transform: uppercase; letter-spacing: 0.05em; background: none; }
++     30: .breakdown { display: flex; flex-direction: column; gap: 1px; margin-bottom: 10px; }
++     31: .breakdown-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; color: #93c5fd; padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
++     32: .breakdown-row span:last-child { font-weight: 700; color: #e5e7eb; min-width: 60px; text-align: right; }
++     33: .total-row { display: flex; justify-content: space-between; align-items: center; padding-top: 10px; border-top: 2px solid #16a34a; font-size: 1rem; font-weight: 700; color: #fff; }
++     34: #total { color: #4ade80; font-size: 1.3rem; }
++     35: .staffing-meta { display: flex; gap: 16px; margin-bottom: 10px; }
++     36: .meta-item { display: flex; flex-direction: column; gap: 2px; }
++     37: .meta-item span:first-child { font-size: 0.65rem; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
++     38: .meta-item span:last-child { font-size: 1.1rem; font-weight: 700; color: #16a34a; }
++     39: .staffing-table, .tracker-table, .wash-table { width: 100%; border-radius: 8px; overflow: hidden; border: 1px solid #e5e7eb; }
++     40: .staffing-header, .staffing-row { display: grid; grid-template-columns: 2fr 0.6fr 0.8fr 0.8fr; padding: 7px 12px; align-items: center; }
++     41: .path-header, .path-row { grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr 1fr 0.8fr !important; }
++     42: .staffing-header, .tracker-header, .wash-header { background: linear-gradient(to right, #1e40af, #1d4ed8); font-size: 0.68rem; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.05em; }
++     43: .staffing-row, .tracker-row, .wash-row { border-top: 1px solid #e5e7eb; font-size: 0.8rem; color: #374151; transition: background 0.12s; }
++     44: .staffing-row:nth-child(even), .tracker-row:nth-child(even), .wash-row:nth-child(even) { background: #f8fafc; }
++     45: .staffing-row:hover, .tracker-row:hover, .wash-row:hover { background: #f0fdf4; }
++     46: .staffing-row span:not(:first-child) { font-weight: 600; color: #111827; }
++     47: .staffing-row span:last-child { color: #16a34a; font-weight: 700; }
++     48: .total-staffing-row { background: linear-gradient(to right, #1e3a5f, #111827) !important; font-weight: 700; }
++     49: .total-staffing-row span { color: #fff !important; }
++     50: .total-staffing-row span:last-child { color: #4ade80 !important; }
++     51: .tracker-header, .tracker-row { display: grid; grid-template-columns: 80px repeat(5, 1fr) 110px; align-items: center; padding: 5px 12px; }
++     52: .tracker-row .hour-label { font-size: 0.78rem; font-weight: 700; color: #374151; }
++     53: .kpi-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
++     54: .kpi-card { background: linear-gradient(135deg, #1e3a5f 0%, #111827 100%); color: #fff; border-radius: 10px; padding: 12px 16px; flex: 1; min-width: 130px; display: flex; flex-direction: column; gap: 3px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); border-top: 3px solid #16a34a; }
++     55: .kpi-label { font-size: 0.65rem; color: #93c5fd; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
++     56: .kpi-value { font-size: 1.6rem; font-weight: 700; color: #4ade80; line-height: 1.1; }
++     57: .kpi-sub { font-size: 0.65rem; color: #6b7280; }
++     58: .kpi-progress { flex: 2; min-width: 200px; }
++     59: .progress-bar-wrap { margin-top: 8px; background: #374151; border-radius: 999px; height: 10px; overflow: hidden; }
++     60: .progress-bar-fill { height: 100%; background: linear-gradient(to right, #16a34a, #4ade80); border-radius: 999px; width: 0%; transition: width 0.4s ease; }
++     61: .chart-details { margin-bottom: 12px; overflow: hidden; }
++     62: .chart-details summary { padding: 12px 16px; font-size: 0.72rem; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; user-select: none; list-style: none; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid transparent; transition: background 0.12s; }
++     63: .chart-details[open] summary { border-bottom-color: #d1fae5; background: #f0fdf4; }
++     64: .chart-details summary:hover { background: #f0fdf4; }
++     65: .chart-details summary::before { content: "\25B6"; font-size: 0.6rem; color: #16a34a; transition: transform 0.2s; }
++     66: .chart-details[open] summary::before { transform: rotate(90deg); }
++     67: .chart-wrap { padding: 28px 20px 16px; }
++     68: .hbar-track { position: relative; height: 32px; background: #e5e7eb; border-radius: 999px; overflow: visible; margin-bottom: 44px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.08); }
++     69: .hbar-fill { height: 100%; border-radius: 999px; background: linear-gradient(to right, #16a34a, #4ade80); width: 0%; transition: width 0.5s ease, background 0.3s ease; }
++     70: .hbar-marker { position: absolute; top: 0; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
++     71: .hbar-marker-line { width: 2px; height: 32px; background: rgba(0,0,0,0.2); }
++     72: .hbar-marker-label { margin-top: 4px; font-size: 0.58rem; color: #6b7280; font-weight: 600; text-align: center; white-space: nowrap; line-height: 1.3; }
++     73: .hbar-marker-label span { color: #111827; font-weight: 700; }
++     74: .ns-card { background: #fff; border-radius: 10px; padding: 14px 16px; margin-top: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); border-left: 4px solid #f59e0b; }
++     75: .ns-card h3 { font-size: 0.72rem; font-weight: 700; color: #92400e; margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid #fde68a; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; background: none; }
++     76: .ns-badge { font-size: 0.62rem; background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 999px; font-weight: 600; text-transform: uppercase; }
++     77: .ns-results { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
++     78: .ns-stat { display: flex; flex-direction: column; gap: 2px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 14px; min-width: 110px; }
++     79: .ns-stat span:first-child { font-size: 0.65rem; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
++     80: .ns-stat span:last-child { font-size: 1rem; font-weight: 700; color: #111827; }
++     81: .ns-stat.highlight { border-color: #f59e0b; background: #fffbeb; }
++     82: .ns-stat.highlight span:last-child { color: #b45309; }
++     83: .ns-stat.highlight-hc { border-color: #16a34a; background: #f0fdf4; }
++     84: .ns-stat.highlight-hc span:last-child { color: #15803d; font-size: 1.2rem; }
++     85: .save-btn, .save-row-btn { padding: 6px 16px; background: #16a34a; color: #fff; border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.15s; white-space: nowrap; font-family: inherit; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
++     86: .save-btn:hover, .save-row-btn:hover { background: #15803d; }
++     87: .save-btn.saved, .save-row-btn.saved { background: #15803d; cursor: default; }
++     88: .save-btn:disabled, .save-row-btn:disabled { background: #9ca3af; cursor: not-allowed; }
++     89: .edit-btn, .edit-row-btn { padding: 6px 16px; background: #2563eb; color: #fff; border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: background 0.15s; white-space: nowrap; margin-left: 4px; font-family: inherit; }
++     90: .edit-btn:hover, .edit-row-btn:hover { background: #1d4ed8; }
++     91: input.locked { background: #f3f4f6 !important; color: #9ca3af !important; border-color: #e5e7eb !important; cursor: not-allowed; }
++     92: .path-staffing-card { margin-top: 12px; }
++     93: .wash-header, .wash-row { display: grid; grid-template-columns: 1.4fr 0.8fr 0.8fr 0.8fr 2fr; align-items: center; padding: 8px 12px; gap: 8px; }
++     94: .variance { font-weight: 700; }
++     95: .var-pos { color: #16a34a; }
++     96: .var-neg { color: #ef4444; }
++     97: .bridge-input { width: 100%; padding: 5px 10px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 0.78rem; color: #374151; background: #fff; resize: vertical; min-height: 36px; font-family: inherit; transition: border-color 0.15s, box-shadow 0.15s; }
++     98: .bridge-input:focus { outline: none; border-color: #16a34a; box-shadow: 0 0 0 3px rgba(22,163,74,0.15); }
++     99: .bridge-wide { min-height: 70px; }
++    100: .eod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
++    101: .eod-grid .field { flex-direction: column; align-items: flex-start; gap: 4px; }
++    102: .eod-grid .field label { flex: none; }
++    103: .eod-grid .field input { width: 100%; }
++    104: .spar-card { border-left-color: #2563eb; }
++    105: .spar-card h3 { color: #1e3a5f; border-bottom-color: #bfdbfe; }
++    106: .spar-badge { background: #dbeafe; color: #1e3a5f; }
++    107: .path-separator-row { display: grid; grid-template-columns: 1fr; padding: 5px 12px; background: #fef9c3; border-top: 2px dashed #fbbf24; font-size: 0.68rem; font-weight: 700; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; }
++    108: .path-row-ns { background: #fffbeb !important; }
++    109: .path-row-ns:hover { background: #fef3c7 !important; }
++    110: .path-row-ns span { color: #92400e !important; }
++    111: .path-row-ns span:last-child { color: #b45309 !important; }
++    112: .path-row-spar { background: #eff6ff !important; }
++    113: .path-row-spar:hover { background: #dbeafe !important; }
++    114: .path-row-spar span { color: #1e3a5f !important; }
++    115: .path-row-spar span:last-child { color: #1d4ed8 !important; }
++    116: 
++    117: /* Handoff-specific styles */
++    118: .handoff-overall { text-align: center; padding: 12px; border-radius: 10px; font-size: 1rem; font-weight: 700; margin: 12px 0; border: 2px solid; }
++    119: .handoff-ok { background: #f0fdf4; border-color: #16a34a; color: #15803d; }
++    120: .handoff-warn { background: #fffbeb; border-color: #f59e0b; color: #b45309; }
++    121: .handoff-bad { background: #fef2f2; border-color: #ef4444; color: #dc2626; }
++    122: .ho-pass { color: #16a34a; font-weight: 700; }
++    123: .ho-fail { color: #ef4444; font-weight: 700; }
++    124: .ho-warn { color: #f59e0b; font-weight: 700; }
++    125: .handoff-input { width: 60px; padding: 3px 6px; border: 1.5px solid #d1d5db; border-radius: 5px; font-size: 0.8rem; text-align: center; background: #f9fafb; color: #111827; font-family: inherit; }
++    126: .handoff-input:focus { outline: none; border-color: #16a34a; box-shadow: 0 0 0 2px rgba(22,163,74,0.15); }
++    127: .handoff-text-input { width: 90px; }
++    128: .handoff-select { padding: 3px 6px; border: 1.5px solid #d1d5db; border-radius: 5px; font-size: 0.8rem; background: #f9fafb; color: #111827; font-family: inherit; }
++    129: .hist-entry { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; cursor: pointer; transition: border-color 0.15s; }
++    130: .hist-entry:hover { border-color: #16a34a; }
++    131: .hist-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
++    132: .hist-date { color: #16a34a; font-weight: 700; }
++    133: .hist-detail { display: none; margin-top: 10px; font-size: 0.75rem; }
++    134: .hist-entry.expanded .hist-detail { display: block; }
++    135: .hist-detail table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
++    136: .hist-detail th { background: #f3f4f6; padding: 4px 6px; text-align: center; border: 1px solid #e5e7eb; font-size: 0.7rem; }
++    137: .hist-detail td { padding: 4px 6px; text-align: center; border: 1px solid #e5e7eb; font-size: 0.7rem; }
++    138: 
++    139: @media print {
++    140:   .tabs, .save-btn, .edit-btn, .save-row-btn, .edit-row-btn, button { display: none !important; }
++    141:   .tab-content { display: block !important; }
++    142: }
